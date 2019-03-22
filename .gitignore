@@ -1,3 +1,4 @@
 CONTROL.xlsx
 OUTPUT.xlsx
 *.png
+~$*.xlsx
