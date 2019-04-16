@@ -322,6 +322,7 @@ def chart_expense_shares(final_aggregate_states):
 def get_months(field):
     return int(field)
 
+
 def format_money(money):
     return "${:,.2f}".format(money)
 
