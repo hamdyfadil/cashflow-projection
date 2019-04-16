@@ -322,6 +322,9 @@ def chart_expense_shares(final_aggregate_states):
 def get_months(field):
     return int(field)
 
+def format_money(money):
+    return "${:,.2f}".format(money)
+
 
 if __name__ == "__main__":
     month_projection = get_months(CONTROL["GENERATE_MONTHS"])
@@ -362,7 +365,7 @@ if __name__ == "__main__":
     calculate_latent_production(all_instances)
     calculate_lead_time(all_instances)
 
-    print("Spare Capital", all_instances[0]["WIGGLE"])
+    print("Spare Capital", format_money(all_instances[0]["WIGGLE"]))
 
     pandas.DataFrame(all_instances).to_excel(
         FILES["OUTPUT"],
@@ -383,7 +386,7 @@ if __name__ == "__main__":
             wiggle_values.add(w)
             print(
                 x["DAY"],
-                x["WIGGLE"],
+                format_money(x["WIGGLE"]),
                 "({0} days later)".format(
                     (x["DAY"] - prev_day).days
                 ) if prev_day else ""
