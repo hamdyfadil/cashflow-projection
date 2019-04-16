@@ -270,7 +270,10 @@ def calculate_latent_production(instances, day_dif=14):
         if i == j:
             in_i["LATENT"] = in_i["BALANCE"] - CONTROL["SET_ASIDE"]
         else:
-            in_i["LATENT"] = min(map(lambda x: x["BALANCE"], instances[i:j])) - CONTROL["SET_ASIDE"]
+            in_i["LATENT"] = min(map(
+                lambda x: x["BALANCE"],
+                instances[i:j]
+            )) - CONTROL["SET_ASIDE"]
         i += 1
 
 
@@ -359,7 +362,7 @@ if __name__ == "__main__":
     calculate_latent_production(all_instances)
     calculate_lead_time(all_instances)
 
-    print(month_projection, all_instances[0]["WIGGLE"])
+    print("Spare Capital", all_instances[0]["WIGGLE"])
 
     pandas.DataFrame(all_instances).to_excel(
         FILES["OUTPUT"],
@@ -378,10 +381,13 @@ if __name__ == "__main__":
         w = x["WIGGLE"]
         if w not in wiggle_values:
             wiggle_values.add(w)
-            print(x["DAY"], x["WIGGLE"], "({0} days later)".format((x["DAY"] - prev_day).days) if prev_day else "")
+            print(
+                x["DAY"],
+                x["WIGGLE"],
+                "({0} days later)".format(
+                    (x["DAY"] - prev_day).days
+                ) if prev_day else ""
+            )
             prev_day = x["DAY"]
 
-    # For graphs and such
-    graph_aggregates(all_instances)
-    chart_expense_shares(final_aggregate_states)
     archive_state()
