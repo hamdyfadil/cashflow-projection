@@ -3,3 +3,5 @@ OUTPUT.xlsx
 *.png
 ~$*.xlsx
 .vscode
+.mypy_cache
+__pycache__
