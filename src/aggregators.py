@@ -3,16 +3,16 @@ from collections import OrderedDict
 from .control import CONTROL
 
 AGGREGATORS = OrderedDict([
-    # Negative Cashflow
-    ("EXPENSES", {
-        "aggregation_rule": lambda a, x: a + min(0, x),
-        "initial_value": 0
-    }),
-    # Positive Cashflow
-    ("INCOME", {
-        "aggregation_rule": lambda a, x: a + max(0, x),
-        "initial_value": 0
-    }),
+    # # Negative Cashflow
+    # ("EXPENSES", {
+    #     "aggregation_rule": lambda a, x: a + min(0, x),
+    #     "initial_value": 0
+    # }),
+    # # Positive Cashflow
+    # ("INCOME", {
+    #     "aggregation_rule": lambda a, x: a + max(0, x),
+    #     "initial_value": 0
+    # }),
     # Difference of Cashflows
     ("BALANCE", {
         "aggregation_rule": lambda a, x: a + x,
