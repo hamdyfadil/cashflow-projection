@@ -78,6 +78,10 @@ if __name__ == "__main__":
         projection(all_instances, goal_date, interest_rate=0.12)
     ))
 
-    print("Good projection (production yield 100%):".ljust(ljust), summarize_projection(
+    print("Cramer projection (production yield 30%):".ljust(ljust), summarize_projection(
+        projection(all_instances, goal_date, interest_rate=0.30)
+    ))
+
+    print("Double projection (production yield 100%):".ljust(ljust), summarize_projection(
         projection(all_instances, goal_date, interest_rate=1.00)
     ))
